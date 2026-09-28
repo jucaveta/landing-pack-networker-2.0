@@ -471,6 +471,32 @@
             }
         }
     </style>
+
+    <!--
+      Meta Pixel -- mismo Pixel ("Pixel de Juan Carlos") ya usado y verificado
+      en la campana de No Fracasaste. Esta landing (enlazada desde Beacons)
+      no tenia ningun pixel instalado -- hallazgo verificado el 27 sep 2026
+      (se reviso el codigo fuente en produccion, sin fbq ni fbevents.js).
+    -->
+    <script>
+    !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+        t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '883591072116005');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_ids: ['pack-networker-3en1'],
+        content_name: 'Pack Networker 3 en 1 — Protocolo Conversacional 3P',
+        content_type: 'product',
+        value: 47,
+        currency: 'PEN'
+    });
+    </script>
 </head>
 
 <body>
@@ -739,6 +765,15 @@
     <script>
         function redirectToCheckout() {
             const hotmartLink = "https://pay.hotmart.com/O103068147H?sck=HOTMART_PRODUCT_PAGE&off=hi1clob7&hotfeature=32&_gl=1*11r2rq1*_gcl_au*NjA3MzU1MDEzLjE3NjE5Mjk5OTkuMTAzMDI4ODIzNy4xNzYzODM1NDM5LjE3NjM4MzYwMjc.*FPAU*NjA3MzU1MDEzLjE3NjE5Mjk5OTk.*_ga*NDM3NTE4MjM1LjE3NjE5Mjk5OTk.*_ga_GQH2V1F11Q*czE3NjM4MzQyODAkbzIzJGcxJHQxNzYzODM2Mjk3JGoyMSRsMCRoMA..&bid=1763836301935";
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', {
+                    content_ids: ['pack-networker-3en1'],
+                    content_name: 'Pack Networker 3 en 1 — Protocolo Conversacional 3P',
+                    content_type: 'product',
+                    value: 47,
+                    currency: 'PEN'
+                });
+            }
             window.location.href = hotmartLink;
         }
     </script>
